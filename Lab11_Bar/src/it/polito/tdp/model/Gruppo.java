@@ -11,7 +11,7 @@ public class Gruppo {
 	public Gruppo(int tempoArrivo) {
 		numPersone = (int) (Math.random()*9+1);
 		tolleranza = (float) (Math.random());
-		tempoArrivo = tempoArrivo;
+		this.tempoArrivo = tempoArrivo;
 		tempoUscita = (int) (tempoArrivo + Math.random()*60+60);
 		tavolo = null;
 	}

@@ -28,7 +28,7 @@ public class Statistiche {
 	}
 	
 	public String toString() {
-		return "Tot clienti: "+this.totClienti+"\nClienti soddisfatti: "+this.clientiSoddisfatti+"\nClienti insoddisfatti: "+this.clientiInsoddisfatti;
+		return "Tot clienti: "+this.totClienti+"\nClienti soddisfatti: "+this.clientiSoddisfatti+"\nClienti insoddisfatti: "+this.clientiInsoddisfatti+"\n";
 	}
 	
 }

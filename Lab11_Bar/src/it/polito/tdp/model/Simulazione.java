@@ -39,11 +39,11 @@ public class Simulazione {
 		
 		int time = 0;
 		for(int i=1; i<numEventi; i++) {
-		int intervallo = (int) (Math.random()*9 + 1);
-		time += intervallo;
-		Gruppo g = new Gruppo(time);
-		Event e = new Event(time, EventType.ARRIVO_GRUPPO_CLIENTI, g);
-		queue.add(e);
+			int intervallo = (int) (Math.random()*9 + 1);
+			time += intervallo;
+			Gruppo g = new Gruppo(time);
+			Event e = new Event(time, EventType.ARRIVO_GRUPPO_CLIENTI, g);
+			queue.add(e);
 		}
 		
 	}
@@ -61,7 +61,7 @@ public class Simulazione {
 		case ARRIVO_GRUPPO_CLIENTI:
 			stat.upClientiTot(e.getGroup().getNumPersone());
 			for(Tavolo t : tavoli) {
-				if(!t.isOccupato() && e.getGroup().getNumPersone()<t.getNumPosti() && e.getGroup().getNumPersone()>=0.5*t.getNumPosti()) {
+				if(!t.isOccupato() && e.getGroup().getNumPersone()<=t.getNumPosti() && e.getGroup().getNumPersone()>=0.5*t.getNumPosti()) {
 					Event e1 = new Event(e.getGroup().getTempoUscita(), EventType.SIT, e.getGroup());
 					queue.add(e1);
 					t.setGroup(e.getGroup());
@@ -82,6 +82,7 @@ public class Simulazione {
 			e.getGroup().getTavolo().setOccupato(false);
 			stat.upClientiSoddisfatti(e.getGroup().getNumPersone());
 			e.getGroup().getTavolo().setGroup(null);
+			e.getGroup().setTavolo(null);
 			break;
 		}
 		
